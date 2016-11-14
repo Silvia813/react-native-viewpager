@@ -17,20 +17,20 @@ var DOT_SAPCE = 4;
 
 var styles = StyleSheet.create({
   tab: {
-    alignItems: 'center',
+    justifyContent: 'flex-end',
   },
 
   tabs: {
     flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: 'flex-end',
+    justifyContent: 'flex-end',
   },
 
   dot: {
     width: DOT_SIZE,
     height: DOT_SIZE,
     borderRadius: DOT_SIZE / 2,
-    backgroundColor: '#E0E1E2',
+    backgroundColor: 'grey',
     marginLeft: DOT_SAPCE,
     marginRight: DOT_SAPCE,
   },
@@ -40,7 +40,7 @@ var styles = StyleSheet.create({
     width: DOT_SIZE,
     height: DOT_SIZE,
     borderRadius: DOT_SIZE / 2,
-    backgroundColor: '#80ACD0',
+    backgroundColor: "white",
     margin: DOT_SAPCE,
     bottom: 0,
   },
@@ -62,9 +62,9 @@ var DefaultViewPageIndicator = React.createClass({
   renderIndicator(page) {
     //var isTabActive = this.props.activePage === page;
     return (
-      <TouchableOpacity style={styles.tab} key={'idc_' + page} onPress={() => this.props.goToPage(page)}>
-        <View style={styles.dot} />
-      </TouchableOpacity>
+        <TouchableOpacity style={styles.tab} key={'idc_' + page} onPress={() => this.props.goToPage(page)}>
+          <View style={styles.dot} />
+        </TouchableOpacity>
     );
   },
 
@@ -78,6 +78,7 @@ var DefaultViewPageIndicator = React.createClass({
     var left = this.props.scrollValue.interpolate({
       inputRange: [0, 1], outputRange: [offsetX, offsetX + itemWidth]
     })
+    if (this.props.activePage == 0) { left = this.props.scrollValue.interpolate({ inputRange: [0, 1], outputRange: [0, 0] }); }
 
     var indicators = [];
     for (var i = 0; i < pageCount; i++) {

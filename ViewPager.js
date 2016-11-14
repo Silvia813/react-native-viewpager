@@ -235,7 +235,7 @@ var ViewPager = React.createClass({
     }
   },
 
-  _getPage(pageIdx: number, loop:boolean = false ) {
+  _getPage(pageIdx: number, loop : boolean = false){
     var dataSource = this.props.dataSource;
     var pageID = dataSource.pageIdentities[pageIdx];
     return (
@@ -334,11 +334,11 @@ var ViewPager = React.createClass({
 var styles = StyleSheet.create({
   indicators: {
     flex: 1,
-    alignItems: 'center',
+    alignItems: 'flex-end',
     position: 'absolute',
     bottom: 10,
     left: 0,
-    right: 0,
+    right: 10,
     backgroundColor: 'transparent',
   },
 });
